@@ -54,7 +54,7 @@ def main():
             if step % 500 == 499:    # print every 500 mini-batches
                 with torch.no_grad():
                     outputs = net(val_image)  # [batch, 10]
-                    predict_y = torch.max(outputs, dim=1)[1]
+                    predict_y = torch.argmax(outputs, dim=1)[1]
                     accuracy = (predict_y == val_label).sum().item() / val_label.size(0)
 
                     print('[%d, %5d] train_loss: %.3f  test_accuracy: %.3f' %
